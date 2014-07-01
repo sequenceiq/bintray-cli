@@ -1,6 +1,6 @@
 : << USAGE
 ######################################################################
-curl -o /tmp/bintray-functions j.mp/xxx && . /tmp/bintray-functions
+curl -o /tmp/bintray-functions j.mp/bintray-functions && . /tmp/bintray-functions
 ######################################################################
 USAGE
 
@@ -86,4 +86,37 @@ bint-package() {
 
 bint-versions() {
   bint-package $1 $2 $3 | jq .versions[] -r
+}
+
+bint-create-version() {
+  BINTRAY_SUBJECT=$1
+  BINTRAY_REPO=$2
+  BINTRAY_PACKAGE=$3
+  BINTRAY_VERSION=$4
+
+  : ${BINTRAY_SUBJECT:? subject is required}
+  : ${BINTRAY_REPO:? repo is required}
+  : ${BINTRAY_PACKAGE:? package is required}
+  : ${BINTRAY_VERSION:? version is required}
+
+  bint-curl /packages/$BINTRAY_SUBJECT/$BINTRAY_REPO/$BINTRAY_PACKAGE/versions -H "Content-Type: application/json" -d @- <<EOF
+{
+"name": "$BINTRAY_VERSION",
+"desc": "$BINTRAY_VERSION creted"
+}
+EOF
+}
+
+bint-delete-version() {
+  BINTRAY_SUBJECT=$1
+  BINTRAY_REPO=$2
+  BINTRAY_PACKAGE=$3
+  BINTRAY_VERSION=$4
+
+  : ${BINTRAY_SUBJECT:? subject is required}
+  : ${BINTRAY_REPO:? repo is required}
+  : ${BINTRAY_PACKAGE:? package is required}
+  : ${BINTRAY_VERSION:? version is required}
+
+  bint-curl /packages/$BINTRAY_SUBJECT/$BINTRAY_REPO/$BINTRAY_PACKAGE/versions/$BINTRAY_VERSION -X DELETE
 }
