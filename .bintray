@@ -48,6 +48,8 @@ bint-browse() {
     break
   done
 
+  echo versions:
+  bint-versions $BINTRAY_SUBJECT $repo $package
 }
 
 bint-last-response() {
@@ -79,17 +81,9 @@ bint-package() {
   : ${BINTRAY_REPO:? repo is required}
   : ${BINTRAY_PACKAGE:? package is required}
 
-  bint-curl /packages/$BINTRAY_SUBJECT/$BINTRAY_REPO/$BINTRAY_PACKAGE |jq .[].name -r
+  bint-curl /packages/$BINTRAY_SUBJECT/$BINTRAY_REPO/$BINTRAY_PACKAGE
 }
 
 bint-versions() {
-  BINTRAY_SUBJECT=$1
-  BINTRAY_REPO=$2
-  BINTRAY_PACKAGE=$3
-
-  : ${BINTRAY_SUBJECT:? subject is required}
-  : ${BINTRAY_REPO:? repo is required}
-  : ${BINTRAY_PACKAGE:? package is required}
-
-  bint-curl /repos/$BINTRAY_SUBJECT/$BINTRAY_REPO/packages |jq .[].name -r
+  bint-package $1 $2 $3 | jq .versions[] -r
 }
