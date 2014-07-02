@@ -1,6 +1,6 @@
 # Bintray CLI
 
-This smal bash cli aims to help [Bintray](https://bintray.com) management.
+This small bash cli aims to help [Bintray](https://bintray.com) management.
 The usual process via web browser:
 
 - click on organisation (subject)
@@ -26,9 +26,9 @@ wget -O /tmp/bintray-functions j.mp/bintray-functions && . /tmp/bintray-function
 
 ## Authentication
 
-Obviously you will need a Bintray account, i recommend to use github OAuth.
+Obviously you will need a Bintray account, we recommend to use GitHub's OAuth2.
 
-Bintray REST api needs basic authentication. Username is your Bintray login id,
+Bintray REST API needs basic authentication. Username is your Bintray login id,
 while the `API key` can be found at your [profile tab](https://bintray.com/user/edit/tab/apikey)
 
 You have to set the following 2 environment variable:
