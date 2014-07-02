@@ -16,8 +16,17 @@ _replace_key() {
   sed s/$BINTRAY_KEY/\$BINTRAY_KEY/ <<< "$@"
 }
 
+_quote_spaces() {
+  FULL=''
+  for next in "$@"; do
+    [[ "$next" == *\ * ]] && FULL="$FULL '$next'" || FULL="$FULL $next"
+  done
+  echo $FULL
+}
+
 run-debug() {
-  safeMsg=$(_replace_key "$@")
+  quotedMsg=$(_quote_spaces "$@")
+  safeMsg=$(_replace_key "$quotedMsg")
   debug "$safeMsg"
 
   bt_resp=$("$@" 2>/dev/null)
