@@ -11,7 +11,7 @@ The usual process via web browser:
 - **upload** the file
 - **publish** the file, otherwise it will be discarded after a while
 
-## Bintray cli
+## Installation
 
 To use the helper function all you need is *source* a file.
 
@@ -33,7 +33,6 @@ You have to set the following 2 environment variable:
 ```
 BINTRAY_USER=<username>
 BINTRAY_KEY=<api-key>
-
 ```
 
 ## Upload/Publish a new version
