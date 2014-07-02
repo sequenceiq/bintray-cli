@@ -46,6 +46,8 @@ bint-curl() {
 bint-browse() {
   PS3="Your choice: "
 
+  BINTRAY_SUBJECT=$1
+  : ${BINTRAY_SUBJECT:? please specify username or organization}
 
   repos=$(bint-curl /repos/$BINTRAY_SUBJECT |jq .[].name -r)
   echo select a REPO
@@ -69,7 +71,7 @@ bint-last-response() {
 
 bint-repos() {
   [ $# -gt 0 ] && BINTRAY_SUBJECT=$1
-  : ${BINTRAY_SUBJECT:? bintray subject is required}
+  : ${BINTRAY_SUBJECT:? please specify username or organization}
   bint-curl /repos/$BINTRAY_SUBJECT |jq .[].name -r
 }
 
@@ -77,7 +79,7 @@ bint-packages() {
   BINTRAY_SUBJECT=$1
   BINTRAY_REPO=$2
 
-  : ${BINTRAY_SUBJECT:? subject is required}
+  : ${BINTRAY_SUBJECT:? please specify username or organization}
   : ${BINTRAY_REPO:? repo is required}
 
   bint-curl /repos/$BINTRAY_SUBJECT/$BINTRAY_REPO/packages |jq .[].name -r
@@ -88,7 +90,7 @@ bint-package() {
   BINTRAY_REPO=$2
   BINTRAY_PACKAGE=$3
 
-  : ${BINTRAY_SUBJECT:? subject is required}
+  : ${BINTRAY_SUBJECT:? please specify username or organization}
   : ${BINTRAY_REPO:? repo is required}
   : ${BINTRAY_PACKAGE:? package is required}
 
@@ -105,7 +107,7 @@ bint-create-version() {
   BINTRAY_PACKAGE=$3
   BINTRAY_VERSION=$4
 
-  : ${BINTRAY_SUBJECT:? subject is required}
+  : ${BINTRAY_SUBJECT:? please specify username or organization}
   : ${BINTRAY_REPO:? repo is required}
   : ${BINTRAY_PACKAGE:? package is required}
   : ${BINTRAY_VERSION:? version is required}
@@ -124,7 +126,7 @@ bint-delete-version() {
   BINTRAY_PACKAGE=$3
   BINTRAY_VERSION=$4
 
-  : ${BINTRAY_SUBJECT:? subject is required}
+  : ${BINTRAY_SUBJECT:? please specify username or organization}
   : ${BINTRAY_REPO:? repo is required}
   : ${BINTRAY_PACKAGE:? package is required}
   : ${BINTRAY_VERSION:? version is required}
@@ -139,7 +141,7 @@ bint-upload() {
   BINTRAY_VERSION=$4
   FILE=$5
 
-  : ${BINTRAY_SUBJECT:? subject is required}
+  : ${BINTRAY_SUBJECT:? please specify username or organization}
   : ${BINTRAY_REPO:? repo is required}
   : ${BINTRAY_PACKAGE:? package is required}
   : ${BINTRAY_VERSION:? version is required}
