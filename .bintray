@@ -129,3 +129,24 @@ bint-delete-version() {
 
   bint-curl /packages/$BINTRAY_SUBJECT/$BINTRAY_REPO/$BINTRAY_PACKAGE/versions/$BINTRAY_VERSION -X DELETE
 }
+
+bint-upload() {
+  BINTRAY_SUBJECT=$1
+  BINTRAY_REPO=$2
+  BINTRAY_PACKAGE=$3
+  BINTRAY_VERSION=$4
+  FILE=$5
+
+  : ${BINTRAY_SUBJECT:? subject is required}
+  : ${BINTRAY_REPO:? repo is required}
+  : ${BINTRAY_PACKAGE:? package is required}
+  : ${BINTRAY_VERSION:? version is required}
+  : ${FILE:? required}
+
+  versionedFileName=${FILE%%.*}-${BINTRAY_VERSION}.${FILE##*.}
+  bint-curl /content/$BINTRAY_SUBJECT/$BINTRAY_REPO/$BINTRAY_PACKAGE/$BINTRAY_VERSION/$versionedFileName \
+    --upload-file $FILE
+
+  bint-curl /content/$BINTRAY_SUBJECT/$BINTRAY_REPO/$BINTRAY_PACKAGE/$BINTRAY_VERSION/publish \
+    -X POST
+}
