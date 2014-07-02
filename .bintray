@@ -96,7 +96,7 @@ bint-package() {
 }
 
 bint-versions() {
-  bint-package $1 $2 $3 | jq .versions[] -r
+  bint-package "$@" | jq .versions[] -r
 }
 
 bint-create-version() {
@@ -145,8 +145,8 @@ bint-upload() {
   : ${BINTRAY_VERSION:? version is required}
   : ${FILE:? required}
 
-  versionedFileName=${FILE%%.*}-${BINTRAY_VERSION}.${FILE##*.}
-  bint-curl /content/$BINTRAY_SUBJECT/$BINTRAY_REPO/$BINTRAY_PACKAGE/$BINTRAY_VERSION/$versionedFileName \
+  #versionedFileName=${FILE%%.*}-${BINTRAY_VERSION}.${FILE##*.}
+  bint-curl /content/$BINTRAY_SUBJECT/$BINTRAY_REPO/$BINTRAY_PACKAGE/$BINTRAY_VERSION/ \
     --upload-file $FILE
 
   bint-curl /content/$BINTRAY_SUBJECT/$BINTRAY_REPO/$BINTRAY_PACKAGE/$BINTRAY_VERSION/publish \
