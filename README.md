@@ -26,6 +26,8 @@ wget -O /tmp/bintray-functions j.mp/bintray-functions && . /tmp/bintray-function
 
 ## Authentication
 
+Obviously you will need a Bintray account, i recommend to use github OAuth.
+
 Bintray REST api needs basic authentication. Username is your Bintray login id,
 while the `API key` can be found at your [profile tab](https://bintray.com/user/edit/tab/apikey)
 
@@ -34,6 +36,9 @@ You have to set the following 2 environment variable:
 BINTRAY_USER=<username>
 BINTRAY_KEY=<api-key>
 ```
+
+Note: email address wont work for authentication, please use the username, which
+shows in the top banner of the webpage when you are logged in.
 
 ## Upload/Publish a new version
 
