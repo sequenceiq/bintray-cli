@@ -13,10 +13,47 @@ The usual process via web browser:
 
 ## Bintray cli
 
-To uuse the heper function all you need is *source* a file.
+To use the helper function all you need is *source* a file.
 
 ```
-curl -o /tmp/bint-functions j.mp/bint-functions && . /tmp/bint-functions
+curl -Lo /tmp/bintray-functions j.mp/bintray-functions && . /tmp/bintray-functions
+```
+or if you have `wget`
+
+```
+wget -O /tmp/bintray-functions j.mp/bintray-functions && . /tmp/bintray-functions
+```
+
+## Authentication
+
+Bintray REST api needs basic authentication. Username is your Bintray login id,
+while the `API key` can be found at your [profile tab](https://bintray.com/user/edit/tab/apikey)
+
+You have to set the following 2 environment variable:
+```
+BINTRAY_USER=<username>
+BINTRAY_KEY=<api-key>
+
+```
+
+## Upload/Publish a new version
+
+The most typical action is to:
+
+- create a new version
+- upload a single file
+- publish it
+
+It can be done with a one-line&reg;
+
+```
+bint-upload-with-version <USER> <REPO> <PACKAGE> <VERSION> <FILE>
+```
+
+example:
+
+```
+bint-upload-with-version sequenceiq sequenceiq-bin hadoop-native-64bit 2.4.99 hadoop-native-64-2.4.99.tar
 ```
 
 ## Commands
