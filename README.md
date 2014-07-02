@@ -40,6 +40,19 @@ BINTRAY_KEY=<api-key>
 Note: email address wont work for authentication, please use the username, which
 shows in the top banner of the webpage when you are logged in.
 
+## Browse your repos
+
+If you want to browse your repos/packages/versions from cli you can use `bint-browse`
+```
+bint-browse <username>
+```
+
+or to browse an organisation you are a member of:
+
+```
+bint-browse <organisation>
+```
+
 ## Upload/Publish a new version
 
 The most typical action is to:
