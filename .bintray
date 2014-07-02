@@ -1,6 +1,8 @@
 : << USAGE
 ######################################################################
-curl -o /tmp/bintray-functions j.mp/bintray-functions && . /tmp/bintray-functions
+curl -Lo /tmp/bintray-functions j.mp/bintray-functions && . /tmp/bintray-functions
+  or
+wget -O /tmp/bintray-functions j.mp/bintray-functions && . /tmp/bintray-functions
 ######################################################################
 USAGE
 
