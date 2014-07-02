@@ -152,3 +152,9 @@ bint-upload() {
   bint-curl /content/$BINTRAY_SUBJECT/$BINTRAY_REPO/$BINTRAY_PACKAGE/$BINTRAY_VERSION/publish \
     -X POST
 }
+
+bint-upload-with-version() {
+  bint-delete-version "$@"
+  bint-create-version "$@"
+  bint-upload "$@"
+}
