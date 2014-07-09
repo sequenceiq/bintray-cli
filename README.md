@@ -70,7 +70,7 @@ bint-upload-with-version <USER> <REPO> <PACKAGE> <VERSION> <FILE>
 example:
 
 ```
-bint-upload-with-version sequenceiq sequenceiq-bin hadoop-native-64bit 2.4.99 hadoop-native-64-2.4.99.tar
+bint-upload-with-version sequenceiq sequenceiq-bin hadoop-native-64bit 2.4.1 hadoop-native-64-2.4.1.tar
 ```
 
 ## Commands
