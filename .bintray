@@ -115,7 +115,7 @@ bint-create-version() {
   bint-curl /packages/$BINTRAY_SUBJECT/$BINTRAY_REPO/$BINTRAY_PACKAGE/versions -H "Content-Type: application/json" -d @- <<EOF
 {
 "name": "$BINTRAY_VERSION",
-"desc": "$BINTRAY_VERSION creted"
+"desc": "$BINTRAY_VERSION created"
 }
 EOF
 }
