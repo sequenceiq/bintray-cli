@@ -6,7 +6,7 @@ wget -O /tmp/bintray-functions j.mp/bintray-functions && . /tmp/bintray-function
 ######################################################################
 USAGE
 
-: ${BINTRAY_KEY:? reuired for authentication}
+: ${BINTRAY_KEY:? required for authentication}
 : ${BINTRAY_USER:? username is required}
 : ${DEBUG:=1}
 
