@@ -6,7 +6,7 @@ wget -O /tmp/bintray-functions j.mp/bintray-functions && . /tmp/bintray-function
 ######################################################################
 USAGE
 
-: ${BINTRAY_KEY:? reuired for authentication}
+: ${BINTRAY_KEY:? required for authentication}
 : ${BINTRAY_USER:? username is required}
 : ${DEBUG:=1}
 
@@ -115,7 +115,7 @@ bint-create-version() {
   bint-curl /packages/$BINTRAY_SUBJECT/$BINTRAY_REPO/$BINTRAY_PACKAGE/versions -H "Content-Type: application/json" -d @- <<EOF
 {
 "name": "$BINTRAY_VERSION",
-"desc": "$BINTRAY_VERSION creted"
+"desc": "$BINTRAY_VERSION created"
 }
 EOF
 }
